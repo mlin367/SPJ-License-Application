@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/mlin367/SPJ-License-Application/issues"
   },
-  "homepage": "https://github.com/mlin367/SPJ-License-Application#readme"
+  "homepage": "https://github.com/mlin367/SPJ-License-Application#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "path": "^0.12.7"
+  }
 }
