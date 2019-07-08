@@ -1,0 +1,20 @@
+{
+  "name": "SPJ-License-Application",
+  "version": "1.0.0",
+  "description": "Mini app for SPJ Solutions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlin367/SPJ-License-Application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlin367/SPJ-License-Application/issues"
+  },
+  "homepage": "https://github.com/mlin367/SPJ-License-Application#readme"
+}
