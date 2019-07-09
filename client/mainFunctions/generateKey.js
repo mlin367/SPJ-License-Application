@@ -65,3 +65,5 @@ const generateKey = (allocation, expiry, customer) => {
   console.log(keyArray)
   return keyArray.join('');
 }
+
+export default generateKey;
