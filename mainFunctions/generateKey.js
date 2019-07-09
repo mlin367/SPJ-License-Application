@@ -9,4 +9,12 @@ const parseDate = date => {
   return dateArray.join('');
 }
 
-const maskForAllocation = 
+const maskForAllocation = dateString => {
+  let maskedString = '';
+  for (let char of dateString) {
+    if (char === '0') maskedString += 'T';
+    else if (char === '9') maskedString += 'X';
+    else maskedString += parseInt(char) + 1;
+  }
+  return maskedString;
+}
