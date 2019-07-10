@@ -16,7 +16,7 @@ submit.onclick = () => {
   if (!allocationString || !expiryString || !customerString) {
     alert('all fields must be filled out!'); 
   } else if (!/^[a-zA-Z]+$/.test(customerString) || customerString.length !== 13) {
-    alert('customer name has to be 13 characters long!')
+    alert('customer name has to be 13 characters long and only include letters!')
   } else {
     const key = generateKey(allocationString, expiryString, customerString);
     document.getElementById('license').innerHTML = `Your License key is ${key}`;
