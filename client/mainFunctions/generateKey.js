@@ -20,6 +20,7 @@ const maskForExpiry = dateString => {
   let maskedString = '';
   for (let char of dateString) {
     if (char === '0') maskedString += 'Z';
+    else if (char === '8') maskedString += 'X'
     else if (char === '9') maskedString += 'Y';
     else maskedString += parseInt(char) + 2;
   }

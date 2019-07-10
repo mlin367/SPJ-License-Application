@@ -1,9 +1,11 @@
 import generateKey from './mainFunctions/generateKey.js';
+import decodeKey from './mainFunctions/decodeKey.js';
 
 const allocation = document.getElementById('allocation');
 const expiry = document.getElementById('expiry');
 const customer = document.getElementById('customer');
 const submit = document.getElementById('submit');
+const retrieve = document.getElementById('retrieve');
 
 let allocationString;
 let expiryString;
@@ -21,6 +23,21 @@ submit.onclick = () => {
     const key = generateKey(allocationString, expiryString, customerString);
     document.getElementById('license').innerHTML = `Your License key is ${key}`;
     sessionStorage.setItem('key', key);
+  }
+}
+
+retrieve.onclick = () => {
+  if (sessionStorage.getItem('key') === null) {
+    alert('No license key in session storage!');
+  } else {
+    const infoNode = document.getElementById('info');
+    infoNode.innerHTML = '';
+    const decodeObject = decodeKey(sessionStorage.getItem('key'));
+    for (let key in decodeObject) {
+      let node = document.createElement('li');
+      node.innerHTML = `${key}: ${decodeObject[key]}`;
+      infoNode.appendChild(node);
+    }
   }
 }
 

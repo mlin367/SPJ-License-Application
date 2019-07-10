@@ -1,19 +1,22 @@
 const decodeForAllocation = dateString => {
   let decodedString = '';
-  for (let char of dateString) {
-    if (char === 'Y') decodedString += '0';
-    else if (char === 'X') decodedString += '9';
-    else decodedString += parseInt(char) - 1;
+  for (let i = 0; i < dateString.length; i++) {
+    if (dateString[i] === 'Y') decodedString += '0';
+    else if (dateString[i] === 'X') decodedString += '9';
+    else decodedString += parseInt(dateString[i]) - 1;
+    if (i === 1 || i === 3) decodedString += '/';
   }
   return decodedString;
 }
 
 const decodeForExpiry = dateString => {
   let decodedString = '';
-  for (let char of dateString) {
-    if (char === 'Z') decodedString += '0';
-    else if (char === 'Y') decodedString += '9';
-    else decodedString += parseInt(char) - 2;
+  for (let i = 0; i < dateString.length; i++) {
+    if (dateString[i] === 'Z') decodedString += '0';
+    else if (dateString[i] === 'X') decodedString += '8';
+    else if (dateString[i] === 'Y') decodedString += '9';
+    else decodedString += parseInt(dateString[i]) - 2;
+    if (i === 1 || i === 3) decodedString += '/';
   }
   return decodedString;
 }
@@ -51,5 +54,7 @@ const decodeKey = key => {
   allocationDate = decodeForAllocation(allocationDate);
   expiryDate = decodeForExpiry(expiryDate);
   customerName = decodeForCustomer(customerName);
-  return [allocationDate, expiryDate, customerName];
+  return {'Date of Allocation': allocationDate, 'Date of Expiry' :expiryDate, 'Customer Name': customerName};
 }
+
+export default decodeKey;
