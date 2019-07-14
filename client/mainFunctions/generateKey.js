@@ -1,6 +1,6 @@
 const parseDate = date => {
   const dateArray = date.split('-');
-  dateArray.push(dateArray.shift().slice(2));
+  dateArray.push(dateArray.shift().slice(-2));
   return dateArray.join('');
 }
 
@@ -32,7 +32,7 @@ const maskForCustomer = string => {
   for (let char of string) {
     let charcode = char.charCodeAt();
     if (charcode >= 88) {
-      charcode -= 25;
+      charcode -= 23;
     } else {
       charcode += 3;
     }

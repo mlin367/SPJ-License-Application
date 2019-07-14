@@ -11,7 +11,10 @@ let allocationString;
 let expiryString;
 let customerString;
 
-allocation.oninput = () => allocationString = allocation.value;
+allocation.oninput = () => {
+  console.log(allocation.value)
+  allocationString = allocation.value;
+}
 expiry.oninput = () => expiryString = expiry.value;
 customer.oninput = () => customerString = customer.value.toUpperCase();
 submit.onclick = () => {

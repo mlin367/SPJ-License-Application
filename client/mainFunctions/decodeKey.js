@@ -26,7 +26,7 @@ const decodeForCustomer = string => {
   for (let char of string) {
     let charcode = char.charCodeAt();
     if (charcode <= 67) {
-      charcode += 25;
+      charcode += 23;
     } else {
       charcode -= 3;
     }
