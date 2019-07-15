@@ -1,6 +1,20 @@
 import generateKey from './mainFunctions/generateKey.js';
 import decodeKey from './mainFunctions/decodeKey.js';
 
+const getDropDownValues = () => {
+  const dropDown = document.getElementById('dropdown');
+  dropDown.innerHTML = '';
+  for (let i = sessionStorage.length - 1; i >= 0; i--) {
+    let key = sessionStorage.getItem(sessionStorage.key(i));
+    let node = document.createElement('option');
+    node.value = key;
+    node.innerHTML = `${key}`;
+    dropDown.appendChild(node);
+  }
+}
+
+getDropDownValues();
+
 const allocation = document.getElementById('allocation');
 const expiry = document.getElementById('expiry');
 const customer = document.getElementById('customer');
@@ -22,17 +36,19 @@ submit.onclick = () => {
   } else {
     const key = generateKey(allocationString, expiryString, customerString);
     document.getElementById('license').innerHTML = `Your License key is ${key}`;
-    sessionStorage.setItem('key', key);
+    sessionStorage.setItem(key, key);
+    getDropDownValues();
   }
 }
 
 retrieve.onclick = () => {
-  if (sessionStorage.getItem('key') === null) {
+  const dropDown = document.getElementById('dropdown');
+  if (sessionStorage.getItem(dropDown.value) === null) {
     alert('No license key in session storage!');
   } else {
     const infoNode = document.getElementById('info');
     infoNode.innerHTML = '';
-    const decodeObject = decodeKey(sessionStorage.getItem('key'));
+    const decodeObject = decodeKey(sessionStorage.getItem(dropDown.value));
     for (let key in decodeObject) {
       let node = document.createElement('li');
       node.innerHTML = `${key}: ${decodeObject[key]}`;
